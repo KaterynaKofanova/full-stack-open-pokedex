@@ -1,0 +1,17 @@
+name: e2e tests
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  e2e_tests:
+  runs-on: ubuntu-18.04
+    steps:
+      - name: e2e tests
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run test:e2e
+          start: npm run start-prod
+          wait-on: http://localhost:5000
